@@ -7,19 +7,35 @@
 //Switches turn member variable to represent whether it's X's or O's turn
 void TicTacToeBoard::toggleTurn()
 {
-
+	if(turn == X)
+		turn = O;
+	else
+		turn = X;	
 }
 
 //Constructor sets an empty board and specifies it is X's turn first
 TicTacToeBoard::TicTacToeBoard()
 {
-
+	for(int i = 0; i < 3; i++)
+	{
+		for(int x = 0; x < 3; x++)
+		{
+			 board[i][x] =   Blank;
+		}
+	}
 }
 
 //Resets each board location to the Blank Piece value
 void TicTacToeBoard::clearBoard()
 {
 
+	for(int i = 0; i < BOARDSIZE; i++)
+	{
+		for(int x = 0; x < BOARDSIZE; x++)
+		{
+			 board[i][x] = Blank;
+		}
+	}
 }
 
 /**
@@ -31,7 +47,15 @@ void TicTacToeBoard::clearBoard()
 **/ 
 Piece TicTacToeBoard::placePiece(int row, int column)
 {
-  return Invalid;
+	if(board[row][column] == X || board[row][colum] == O)
+	{
+		return board[row][column]; 
+	}
+	else
+	{
+		board[row][column] = turn; 
+  		return Invalid;
+	}
 }
 
 /**
@@ -40,7 +64,14 @@ Piece TicTacToeBoard::placePiece(int row, int column)
 **/
 Piece TicTacToeBoard::getPiece(int row, int column)
 {
-  return Invalid;
+	if(row < BOARDSIZE || coulmn < BOARDSIZE)
+  		return Invalid;
+
+	else if(row > 0  || coulmn > 0)
+  		return Invalid;
+
+	else
+  		return board[row][coulmn];
 }
 
 /**
